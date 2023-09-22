@@ -21,7 +21,7 @@ const CityRoute = (app: any) => {
     }
   );
 
-  app.get("/city/all", FindAll);
+  app.get("/city/", FindAll);
   app.get("/city/:zipCode", FindByZipCode);
   app.put("/city/:recordId", UpdateZipCode);
   app.delete("/city/:recordId", DeleteZipCode);
