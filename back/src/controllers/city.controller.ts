@@ -59,7 +59,7 @@ export const UpdateZipCode = async (
   } catch (error) {
     res.status(500).send({
       error,
-      message: "Error update a city by zip code",
+      message: "Error update a city by recordID",
     });
   }
 };
@@ -69,7 +69,6 @@ export const DeleteZipCode = async (
   res: Express.Response
 ) => {
   const { recordId } = req.params;
-
   try {
     const objWithIdIndex = listCity.findIndex(
       (city: any) => city.recordid === recordId
@@ -80,12 +79,11 @@ export const DeleteZipCode = async (
     }
 
     fs.writeFileSync(__dirname + dataPath, JSON.stringify(listCity));
-
     res.status(200).send("city " + recordId + " deleted");
   } catch (error) {
     res.status(500).send({
       error,
-      message: "Error update a city by zip code",
+      message: "Error delete a city by recordID",
     });
   }
 };
