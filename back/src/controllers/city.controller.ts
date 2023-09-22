@@ -63,3 +63,29 @@ export const UpdateZipCode = async (
     });
   }
 };
+
+export const DeleteZipCode = async (
+  req: Express.Request,
+  res: Express.Response
+) => {
+  const { recordId } = req.params;
+
+  try {
+    const objWithIdIndex = listCity.findIndex(
+      (city: any) => city.recordid === recordId
+    );
+
+    if (objWithIdIndex > -1) {
+      listCity.splice(objWithIdIndex, 1);
+    }
+
+    fs.writeFileSync(__dirname + dataPath, JSON.stringify(listCity));
+
+    res.status(200).send("city " + recordId + " deleted");
+  } catch (error) {
+    res.status(500).send({
+      error,
+      message: "Error update a city by zip code",
+    });
+  }
+};

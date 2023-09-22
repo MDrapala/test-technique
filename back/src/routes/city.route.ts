@@ -3,6 +3,7 @@ import {
   FindAll,
   FindByZipCode,
   UpdateZipCode,
+  DeleteZipCode,
 } from "../controllers/city.controller";
 
 const CityRoute = (app: any) => {
@@ -23,6 +24,7 @@ const CityRoute = (app: any) => {
   app.get("/city/all", FindAll);
   app.get("/city/:zipCode", FindByZipCode);
   app.put("/city/:recordId", UpdateZipCode);
+  app.delete("/city/:recordId", DeleteZipCode);
 };
 
 export default CityRoute;
