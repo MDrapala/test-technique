@@ -1,5 +1,9 @@
 import Express from "express";
-import { FindAll, FindByZipCode } from "../controllers/city.controller";
+import {
+  FindAll,
+  FindByZipCode,
+  UpdateZipCode,
+} from "../controllers/city.controller";
 
 const CityRoute = (app: any) => {
   app.use(
@@ -18,6 +22,7 @@ const CityRoute = (app: any) => {
 
   app.get("/city/all", FindAll);
   app.get("/city/:zipCode", FindByZipCode);
+  app.put("/city/:recordId", UpdateZipCode);
 };
 
 export default CityRoute;

@@ -41,3 +41,25 @@ export const FindByZipCode = async (
     });
   }
 };
+
+export const UpdateZipCode = async (
+  req: Express.Request,
+  res: Express.Response
+) => {
+  const { recordId } = req.params;
+  const { zipCode } = req.body;
+  try {
+    listCity.find((city: any) => {
+      if (city.recordid === recordId) {
+        city.fields.code_postal = zipCode;
+        fs.writeFileSync(__dirname + dataPath, JSON.stringify(listCity));
+        res.status(200).send(city);
+      }
+    });
+  } catch (error) {
+    res.status(500).send({
+      error,
+      message: "Error update a city by zip code",
+    });
+  }
+};
