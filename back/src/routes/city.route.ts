@@ -1,5 +1,6 @@
 import Express from "express";
-import { FindAll } from "../controllers/city.controller";
+import { FindAll, FindByZipCode } from "../controllers/city.controller";
+
 const CityRoute = (app: any) => {
   app.use(
     (
@@ -14,7 +15,9 @@ const CityRoute = (app: any) => {
       next();
     }
   );
+
   app.get("/city/all", FindAll);
+  app.get("/city/:zipCode", FindByZipCode);
 };
 
 export default CityRoute;
