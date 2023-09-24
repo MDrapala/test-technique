@@ -14,6 +14,6 @@ export const loadCities = async (): Promise<City[]> => {
   return cities;
 };
 
-export const updateCitiesByZipCode = async (cities: City[]) => {
+export const updateCitiesByZipCode = (cities: City[]) => {
   fs.writeFileSync(__dirname + dataPath, JSON.stringify(cities));
 };

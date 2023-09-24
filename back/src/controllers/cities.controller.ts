@@ -70,7 +70,7 @@ export const UpdateZipCode = async (
       city.fields.code_postal = newZipCode;
     });
 
-    await updateCitiesByZipCode(cities);
+    updateCitiesByZipCode(cities);
 
     res.status(200).send({
       cities: cities,
@@ -85,26 +85,47 @@ export const UpdateZipCode = async (
   }
 };
 
-// export const DeleteZipCode = async (
-//   req: Express.Request,
-//   res: Express.Response
-// ) => {
-//   const { recordId } = req.params;
-//   try {
-//     const objWithIdIndex = listCity.findIndex(
-//       ((city) => city.recordid === recordId
-//     );
+export const DeleteZipCode = async (
+  req: Express.Request,
+  res: Express.Response
+) => {
+  const { zipCode } = req.params;
 
-//     if (objWithIdIndex > -1) {
-//       listCity.splice(objWithIdIndex, 1);
-//     }
+  if (!zipCode) {
+    res.status(400).send({ message: "Zip code is missing" });
+  }
 
-//     fs.writeFileSync(__dirname + dataPath, JSON.stringify(listCity));
-//     res.status(200).send("city " + recordId + " deleted");
-//   } catch (error) {
-//     res.status(500).send({
-//       error,
-//       message: "Error delete a city by recordID",
-//     });
-//   }
-// };
+  try {
+    const cities = await loadCities();
+
+    const filteredCities = cities.filter(
+      (city) => city.fields.code_postal === zipCode
+    );
+
+    if (!filteredCities) {
+      res.status(404).send({ message: "City not found" });
+    }
+
+    for (const filteredCity of filteredCities) {
+      const index = cities.findIndex(
+        (city) => city.recordid === filteredCity.recordid
+      );
+      if (index !== -1) {
+        cities.splice(index, 1);
+      }
+    }
+
+    updateCitiesByZipCode(cities);
+
+    res.status(200).send({
+      cities: cities,
+      removes_cities: filteredCities,
+      number_of_pages: cities.length,
+    });
+  } catch (error) {
+    res.status(500).send({
+      error,
+      message: "Error delete a city by recordID",
+    });
+  }
+};
