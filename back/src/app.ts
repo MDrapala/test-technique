@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import * as middlewares from "./middlewares";
-import cityRoute from "./routes/city.route";
+import cityRoute from "./routes/cities.route";
 import defaultRoute from "./routes/default.route";
 require("dotenv").config();
 
