@@ -1,6 +1,6 @@
 import Express from "express";
 import {
-  FindAll,
+  FindCities,
   FindByZipCode,
   UpdateZipCode,
   // DeleteZipCode,
@@ -21,7 +21,7 @@ const CitiesRoute = (app: any) => {
     }
   );
 
-  app.get("/cities/", FindAll);
+  app.get("/cities/", FindCities);
   app.get("/cities/:zipCode", FindByZipCode);
   app.put("/cities/:zipCode", UpdateZipCode);
   // app.delete("/cities/:zipCode", DeleteZipCode);

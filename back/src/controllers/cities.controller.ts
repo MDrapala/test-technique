@@ -1,8 +1,7 @@
 import Express from "express";
-import { loadCities } from "../utils";
-import { updateCitiesByZipCode } from "../utils/index";
+import { loadCities, updateCitiesByZipCode } from "../utils";
 
-export const FindAll = async (_: Express.Request, res: Express.Response) => {
+export const FindCities = async (_: Express.Request, res: Express.Response) => {
   const cities = await loadCities();
   try {
     if (!cities) {
@@ -28,6 +27,7 @@ export const FindByZipCode = async (
   }
 
   const cities = await loadCities();
+
   const citiesList = cities.filter(
     (city) => city.fields.code_postal === zipCode
   );
@@ -66,8 +66,17 @@ export const UpdateZipCode = async (
       res.status(404).send({ message: "City not found" });
     }
 
-    const response = await updateCitiesByZipCode(filteredCities, newZipCode);
-    console.log({ response });
+    filteredCities.forEach((city) => {
+      city.fields.code_postal = newZipCode;
+    });
+
+    await updateCitiesByZipCode(cities);
+
+    res.status(200).send({
+      cities: cities,
+      new_cities: filteredCities,
+      number_of_pages: cities.length,
+    });
   } catch (error) {
     res.status(500).send({
       error,
