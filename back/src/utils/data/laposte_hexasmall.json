@@ -1,0 +1,13 @@
+{
+  "datasetid": "laposte_hexasmal",
+  "recordid": "ddcee9cd7e94a82f2c0457470118e43e2e882c63",
+  "fields": {
+    "nom_de_la_commune": "ECOUEN",
+    "libelle_d_acheminement": "ECOUEN",
+    "code_postal": "684201",
+    "coordonnees_gps": [49.025890296, 2.384418866],
+    "code_commune_insee": "95205"
+  },
+  "geometry": { "type": "Point", "coordinates": [2.384418866, 49.025890296] },
+  "record_timestamp": "2022-03-21T00:35:00+01:00"
+}
