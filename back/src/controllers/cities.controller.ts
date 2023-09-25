@@ -16,6 +16,35 @@ export const FindCities = async (_: Express.Request, res: Express.Response) => {
   }
 };
 
+export const FindCitiesByPaginate = async (
+  req: Express.Request,
+  res: Express.Response
+) => {
+  const { numberPage, limitResult } = req.params;
+
+  if (!numberPage) {
+    res.status(400).send({ message: "Number page is missing" });
+  }
+  if (!limitResult) {
+    res.status(400).send({ message: "Limit result is missing" });
+  }
+
+  const cities = await loadCities();
+
+  const citiesList = cities.slice(
+    (parseInt(numberPage) - 1) * parseInt(limitResult),
+    parseInt(numberPage) * parseInt(limitResult)
+  );
+
+  if (!citiesList) {
+    res.status(404).send({ message: "City not found" });
+  }
+
+  res
+    .status(200)
+    .send({ cities: citiesList, number_of_pages: citiesList.length });
+};
+
 export const FindByZipCode = async (
   req: Express.Request,
   res: Express.Response

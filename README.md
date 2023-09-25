@@ -23,12 +23,12 @@ Votre rendu final devra comprendre :
 - ✅ **Une route pour accèder à la liste complète**: Un utilisateur veut accéder à la liste complète des villes.</br>
 - ✅ **Une route pour accèder à un code postal précis**: Un utilisateur veut accéder à un code postal en particulier.</br>
 - ✅ **Une route pour modifier une entrée**: Un utilisateur veut modifier une information lié au code postal.</br>
-- **Une route pour supprimer une entrée**: Un utilisateur veut supprimé une entrée via le code postal.</br>
+- ✅ **Une route pour supprimer une entrée**: Un utilisateur veut supprimé une entrée via le code postal.</br>
 
 ### Si vous postulez pour le poste de dev Senior:
 
-- **Les mêmes exercices que le Junior**</br>
-- **Une route pour lister les villes avec de la pagination**: Un utilisateur veut lister les villes mais page par page.</br>
+- ✅ **Les mêmes exercices que le Junior**</br>
+- ✅ **Une route pour lister les villes avec de la pagination**: Un utilisateur veut lister les villes mais page par page.</br>
 - **Une route pour lister les villes d'un département**: Un utilisateur veut lister les villes d'un département.</br>
 - **Une route pour lister les villes dans un rayon fourni**: Un utilisateur veut lister les villes dans un rayon défini.</br>
 
