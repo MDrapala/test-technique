@@ -70,6 +70,44 @@ export const FindByZipCode = async (
     .send({ cities: citiesList, number_of_pages: citiesList.length });
 };
 
+export const FindZipCodeByOrder = async (
+  req: Express.Request,
+  res: Express.Response
+) => {
+  const { zipCode, typeOrder } = req.params;
+
+  if (!zipCode) {
+    res.status(400).send({ message: "Zip code is missing" });
+  }
+  if (!typeOrder || (typeOrder !== "asc" && typeOrder !== "desc")) {
+    res.status(400).send({ message: "Type filter is missing" });
+  }
+
+  const cities = await loadCities();
+
+  const citiesList = cities.filter(
+    (city) => city.fields.code_postal === zipCode
+  );
+
+  if (!citiesList) {
+    res.status(404).send({ message: "City not found" });
+  }
+
+  if (typeOrder === "asc") {
+    citiesList.sort((a, b) =>
+      a.fields.nom_de_la_commune.localeCompare(b.fields.nom_de_la_commune)
+    );
+  } else {
+    citiesList.sort((a, b) =>
+      b.fields.nom_de_la_commune.localeCompare(a.fields.nom_de_la_commune)
+    );
+  }
+
+  res
+    .status(200)
+    .send({ cities: citiesList, number_of_pages: citiesList.length });
+};
+
 export const UpdateZipCode = async (
   req: Express.Request,
   res: Express.Response

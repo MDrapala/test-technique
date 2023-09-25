@@ -29,7 +29,7 @@ Votre rendu final devra comprendre :
 
 - ✅ **Les mêmes exercices que le Junior**</br>
 - ✅ **Une route pour lister les villes avec de la pagination**: Un utilisateur veut lister les villes mais page par page.</br>
-- **Une route pour lister les villes d'un département**: Un utilisateur veut lister les villes d'un département.</br>
+- ✅ **Une route pour lister les villes d'un département**: Un utilisateur veut lister les villes d'un département.</br>
 - **Une route pour lister les villes dans un rayon fourni**: Un utilisateur veut lister les villes dans un rayon défini.</br>
 
 ## Test technique frontend

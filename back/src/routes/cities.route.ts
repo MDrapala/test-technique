@@ -3,6 +3,7 @@ import {
   FindCities,
   FindCitiesByPaginate,
   FindByZipCode,
+  FindZipCodeByOrder,
   UpdateZipCode,
   DeleteZipCode,
 } from "../controllers/cities.controller";
@@ -25,6 +26,7 @@ const CitiesRoute = (app: any) => {
   app.get("/cities/", FindCities);
   app.get("/cities/pages=:numberPage&limit=:limitResult", FindCitiesByPaginate);
   app.get("/cities/:zipCode", FindByZipCode);
+  app.get("/cities/:zipCode/:typeOrder", FindZipCodeByOrder);
   app.put("/cities/:zipCode", UpdateZipCode);
   app.delete("/cities/:zipCode", DeleteZipCode);
 };
