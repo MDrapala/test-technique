@@ -12,25 +12,15 @@ const Menu = () => {
             <path d="M256 64c-70.692 0-128 57.308-128 128s57.308 128 128 128 128-57.308 128-128S326.692 64 256 64zm0 224c-52.935 0-96-43.065-96-96s43.065-96 96-96 96 43.065 96 96-43.065 96-96 96z" />
             <path d="M256 128c-35.346 0-64 28.654-64 64s28.654 64 64 64 64-28.654 64-64-28.654-64-64-64zm0 96c-17.673 0-32-14.327-32-32s14.327-32 32-32 32 14.327 32 32-14.327 32-32 32z" />
           </svg>
-          <span className="font-semibold text-xl tracking-tight">
-            Movie App
+          <span className="font-semibold text-xl tracking-tight ml-5">
+            PitchBoy - Test technique
           </span>
         </div>
-        <div className="flex items-center mr-6">
+        {/* <div className="flex items-center mr-6">
           <a href="/" className="hover:text-gray-400">
             Home
           </a>
-        </div>
-        <div className="flex items-center mr-6">
-          <a href="/movies" className="hover:text-gray-400">
-            Movies
-          </a>
-        </div>
-        <div className="flex items-center mr-6">
-          <a href="/series" className="hover:text-gray-400">
-            Series
-          </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );

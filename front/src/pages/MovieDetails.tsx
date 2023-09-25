@@ -1,12 +1,10 @@
-import { CardProps } from "../types/default";
 import { formatDate } from "../utils/convert";
 
-const Card = ({ data }: CardProps) => {
-  const overview =
-    data?.overview.length > 72
-      ? data?.overview.slice(0, 72) + "..."
-      : data?.overview;
+type PropsMovieDetails = {
+  data: any;
+};
 
+const MovieDetails = ({ data }: PropsMovieDetails) => {
   return (
     <div className=" bg-gray-100 flex flex-col sm:py-12">
       <div className="py-3 sm:max-w-xl sm:mx-auto h-full">
@@ -36,7 +34,7 @@ const Card = ({ data }: CardProps) => {
               </div>
             </div>
             <p className=" text-gray-400 max-h-40 overflow-y-hidden">
-              {data?.overview ? overview : "No description"}
+              {data?.overview ? data?.overview : "No description"}
             </p>
           </div>
         </div>
@@ -45,4 +43,4 @@ const Card = ({ data }: CardProps) => {
   );
 };
 
-export default Card;
+export default MovieDetails;

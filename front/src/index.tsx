@@ -1,15 +1,31 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
-import "./styles/index.css";
-import App from "./App";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
+import "./styles/index.css";
+import React from "react";
+import App from "./pages/App";
+import MovieDetails from "./pages/MovieDetails";
+import ErrorPage from "./pages/error";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
+const RouterApp = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/movie/:id",
+    element: <MovieDetails data={[]} />,
+  },
+]);
+
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={RouterApp} />
   </React.StrictMode>
 );
 
