@@ -57,32 +57,24 @@ export const UpdateZipCode = async (
 
   const cities = await loadCities();
 
-  try {
-    const filteredCities = cities.filter(
-      (city) => city.fields.code_postal === zipCode
-    );
+  const filteredCities = cities.filter(
+    (city) => city.fields.code_postal === zipCode
+  );
 
-    if (!filteredCities) {
-      res.status(404).send({ message: "City not found" });
-    }
-
-    filteredCities.forEach((city) => {
-      city.fields.code_postal = newZipCode;
-    });
-
-    updateCitiesByZipCode(cities);
-
-    res.status(200).send({
-      cities: cities,
-      new_cities: filteredCities,
-      number_of_pages: cities.length,
-    });
-  } catch (error) {
-    res.status(500).send({
-      error,
-      message: "Error update a city by recordID",
-    });
+  if (!filteredCities) {
+    res.status(404).send({ message: "City not found" });
   }
+
+  filteredCities.forEach((city) => {
+    city.fields.code_postal = newZipCode;
+  });
+
+  await updateCitiesByZipCode(cities);
+
+  res.status(200).send({
+    updated_cities: filteredCities,
+    number_of_pages: filteredCities.length,
+  });
 };
 
 export const DeleteZipCode = async (
@@ -115,12 +107,11 @@ export const DeleteZipCode = async (
       }
     }
 
-    updateCitiesByZipCode(cities);
+    await updateCitiesByZipCode(cities);
 
     res.status(200).send({
-      cities: cities,
       removes_cities: filteredCities,
-      number_of_pages: cities.length,
+      number_of_pages: filteredCities.length,
     });
   } catch (error) {
     res.status(500).send({
