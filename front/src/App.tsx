@@ -1,22 +1,32 @@
 import { useEffect, useState } from "react";
 import { getLastMovie } from "./services/get";
-import Card from "./components/card";
+import Menu from "./components/menu";
+import ListCard from "./components/List";
+
+type TheMovieDBResult = {
+  page: number;
+  results: Array<any>;
+  total_pages: number;
+  total_results: number;
+};
 
 const App = () => {
-  const [lastMovie, setLastMovie] = useState([]);
+  const [movieList, setMovieList] = useState<TheMovieDBResult>();
+
+  const loadLastMovie = async () => {
+    const res = await getLastMovie();
+    setMovieList(res);
+  };
 
   useEffect(() => {
-    getLastMovie().then((res: any) => setLastMovie(res.data));
+    loadLastMovie().catch((error) => console.error(error));
   }, []);
 
-  console.log(lastMovie);
+  console.log(movieList);
   return (
-    <div>
-      <h1 className="text-xl text-gray-600 justify-center flex items-center my-12">
-        Pitchboy test-technique
-      </h1>
-
-      <Card data={lastMovie} />
+    <div className="bg-gray-100">
+      <Menu />
+      {movieList?.results && <ListCard movieLists={movieList?.results} />}
     </div>
   );
 };

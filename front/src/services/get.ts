@@ -1,7 +1,12 @@
-import http from "../http-common";
+const API_KEY = "?api_key=6a46855662346957d41ea78b3e983221&";
 
-const API_KEY = "?api_key=6a46855662346957d41ea78b3e983221";
+export const getLastMovie = async () => {
+  const get = await fetch(
+    "https://api.themoviedb.org/3/discover/movie" +
+      API_KEY +
+      "page=1&sort_by=primary_release_date.desc"
+  );
+  const data = await get.json();
 
-export const getLastMovie = () => {
-  return http.get("/movie/latest" + API_KEY);
+  return data;
 };
