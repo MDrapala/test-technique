@@ -17,3 +17,12 @@ export const FindMovieById = async (id: string): Promise<Movie> => {
   const data = await response.json();
   return data;
 };
+
+export const FindRecommandationByMovieId = async (
+  id: string,
+  number: number
+): Promise<Movie[]> => {
+  const response = await fetch(`${WEB_SITE_URL}movie/${id}/similar${API_KEY}`);
+  const data = await response.json();
+  return data.results.slice(0, number);
+};

@@ -1,23 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { FindMovieById } from "../services/get";
+import { FindMovieById, FindRecommandationByMovieId } from "../services/get";
 import Layout from "./Layout";
 import { Movie } from "../types/movie";
 import { FormatDate } from "../utils/convert";
+import ListCard from "../components/List";
 
 const MovieDetails = () => {
   const params = useParams();
   const [movie, setMovie] = useState<Movie>();
-
-  const loadMovieDetails = async () => {
-    const movieDetails = await FindMovieById(params.id as string);
-    if (movieDetails) setMovie(movieDetails);
-  };
-
-  useEffect(() => {
-    loadMovieDetails().catch((error: TypeError) => console.error(error));
-  }, []);
-
+  const [recommendsMovie, setRecommendsMovie] = useState<Movie[]>([]);
   const movieInfo = [
     {
       title: "ID",
@@ -45,9 +37,27 @@ const MovieDetails = () => {
     },
   ];
 
+  const loadMovieDetails = async () => {
+    const movieDetails = await FindMovieById(params.id as string);
+    if (movieDetails) setMovie(movieDetails);
+  };
+
+  const loadRecommends = async () => {
+    const recommends = await FindRecommandationByMovieId(
+      params.id as string,
+      3
+    );
+    if (recommends) setRecommendsMovie(recommends);
+  };
+
+  useEffect(() => {
+    loadMovieDetails().catch((error: TypeError) => console.error(error));
+    loadRecommends().catch((error: TypeError) => console.error(error));
+  }, []);
+
   return (
     <Layout>
-      <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
+      <div className="md:flex items-start justify-center pt-12 2xl:px-20 md:px-6 px-4 ">
         <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden md:sticky">
           <img
             className="md:w-96"
@@ -71,8 +81,11 @@ const MovieDetails = () => {
           />
         </div>
         <div className="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
-          {movieInfo.map((info) => (
-            <div className="py-4 border-b border-gray-200 flex items-center justify-between">
+          {movieInfo.map((info, index) => (
+            <div
+              key={index}
+              className="py-4 border-b border-gray-200 flex items-center justify-between"
+            >
               <p className="text-base leading-4 text-gray-800 dark:text-gray-300">
                 {info.title}
               </p>
@@ -83,7 +96,6 @@ const MovieDetails = () => {
               </div>
             </div>
           ))}
-
           <a
             href={movie?.homepage}
             target="_blank"
@@ -98,6 +110,15 @@ const MovieDetails = () => {
           </div>
         </div>
       </div>
+      {recommendsMovie.length > 0 ? (
+        <ListCard movieLists={recommendsMovie} />
+      ) : (
+        <div className="flex items-center justify-center mt-12">
+          <h6 className="text-center py-2 px-4 bg-gray-100 rounded-lg">
+            No similar movie
+          </h6>
+        </div>
+      )}
     </Layout>
   );
 };

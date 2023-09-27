@@ -47,7 +47,7 @@ Votre rendu final devra comprendre :
 - ✅ **Affichage des derniers films**: Un utilisateur peut voir les derniers films sur la page d'accueil.</br>
 - ✅ **Affichage dans des films dans l'ordre**: Un utilisateur peut afficher les films par leur ordre de sortie.</br>
 - ✅ **Affichage d'un film sur une autre page**: Un utilisateur peut alors voir tout les détails d'un film(vous êtes libre d'afficher le nombre d'informations que vous voulez).</br>
-- **Affichage les suggestions d'un film**: Une fois sur la page de détails, un utilisateur peut voir les suggestions alternative en rapport avec ce film.</br>
+- ✅ **Affichage les suggestions d'un film**: Une fois sur la page de détails, un utilisateur peut voir les suggestions alternative en rapport avec ce film.</br>
 
 ### Si vous postulez pour le poste de dev Senior:
 
