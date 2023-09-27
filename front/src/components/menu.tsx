@@ -1,6 +1,6 @@
 const Menu = () => {
   return (
-    <div className="flex bg-gray-800 text-white p-4">
+    <div className="flex fixed w-full z-50 bg-gray-800 text-white p-4">
       <div className="flex">
         <div className="flex items-center mr-6">
           <svg
@@ -16,11 +16,11 @@ const Menu = () => {
             PitchBoy - Test technique
           </span>
         </div>
-        {/* <div className="flex items-center mr-6">
+        <div className="flex items-center mr-6">
           <a href="/" className="hover:text-gray-400">
             Home
           </a>
-        </div> */}
+        </div>
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { FilterMovieByOrder } from "../services/get";
-import Menu from "../components/menu";
 import ListCard from "../components/List";
 import type { PropsSortBy } from "../types/default";
 import type { TheMovieDBResult } from "../types/themoviedb";
 import Options from "../components/option";
+import Layout from "./Layout";
 
 const App = () => {
   const [movieList, setMovieList] = useState<TheMovieDBResult>();
@@ -20,11 +20,10 @@ const App = () => {
   }, [sortBy]);
 
   return (
-    <div className="bg-gray-100">
-      <Menu />
+    <Layout>
       <Options sortBy={sortBy} setSortBy={setSortBy} />
       {movieList?.results && <ListCard movieLists={movieList?.results} />}
-    </div>
+    </Layout>
   );
 };
 

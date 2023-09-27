@@ -1,5 +1,4 @@
 import { CardProps } from "../types/default";
-import { formatDate } from "../utils/convert";
 
 const Card = ({ data }: CardProps) => {
   const overview =
@@ -8,40 +7,27 @@ const Card = ({ data }: CardProps) => {
       : data?.overview;
 
   return (
-    <div className=" bg-gray-100 flex flex-col sm:py-12">
-      <div className="py-3 sm:max-w-xl sm:mx-auto h-full">
-        <div className="bg-white shadow-lg border-gray-100 min-h-66 border sm:rounded-3xl p-8 flex space-x-8">
-          <div className="h-full overflow-visible w-1/2">
-            <img
-              className="rounded-3xl shadow-lg h-72"
-              src={
-                data?.poster_path
-                  ? `https://image.tmdb.org/t/p/w300${data?.poster_path}`
-                  : "https://popcornusa.s3.amazonaws.com/placeholder-movieimage.png"
-              }
-              alt=""
-            />
-          </div>
-          <div className="flex flex-col w-1/2 space-y-4">
-            <div className="flex justify-between items-start">
-              <h2 className="text-3xl font-bold">{data?.title}</h2>
-              <div className="bg-yellow-400 font-bold rounded-xl p-2">
-                {data?.vote_count.toFixed(1)}
-              </div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-400">Movie</div>
-              <div className="text-lg text-gray-800">
-                {formatDate(data?.release_date)}
-              </div>
-            </div>
-            <p className=" text-gray-400 max-h-40 overflow-y-hidden">
-              {data?.overview ? overview : "No description"}
-            </p>
-          </div>
-        </div>
+    <article
+      className="mx-auto max-w-sm shadow-xl bg-cover bg-center min-h-150 w-full transform duration-500 hover:-translate-y-2 cursor-pointer group"
+      onClick={() => window.open(`/movie/${data?.id}`)}
+      style={{
+        backgroundImage: `url( ${
+          data?.poster_path
+            ? `https://image.tmdb.org/t/p/w300${data?.poster_path}`
+            : "https://popcornusa.s3.amazonaws.com/placeholder-movieimage.png"
+        })`,
+      }}
+    >
+      <div className="bg-black bg-opacity-20 h-full min-h-160 w-full px-10 flex flex-wrap flex-col pt-96 hover:bg-opacity-75 transform duration-300">
+        <h1 className="text-white text-3xl mb-5 transform translate-y-20 group-hover:translate-y-0 duration-300">
+          {data?.title}
+        </h1>
+        <div className="w-16 h-2  rounded-full mb-12 transform translate-y-20 group-hover:translate-y-0 duration-300"></div>
+        <p className="flex w-full opacity-0 text-white text-xl group-hover:opacity-80 transform duration-500">
+          {data?.overview ? overview : "No description"}
+        </p>
       </div>
-    </div>
+    </article>
   );
 };
 

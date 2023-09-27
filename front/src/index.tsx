@@ -19,7 +19,7 @@ const RouterApp = createBrowserRouter([
   },
   {
     path: "/movie/:id",
-    element: <MovieDetails data={[]} />,
+    element: <MovieDetails />,
   },
 ]);
 
