@@ -21,6 +21,11 @@ const Menu = () => {
             Home
           </a>
         </div>
+        <div className="flex items-center mr-6">
+          <a href="/favorites" className="hover:text-gray-400">
+            Favorites
+          </a>
+        </div>
       </div>
     </div>
   );

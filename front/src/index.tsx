@@ -1,11 +1,12 @@
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-import "./styles/index.css";
+import "./assets/styles/index.css";
 import React from "react";
 import App from "./pages/App";
 import MovieDetails from "./pages/MovieDetails";
 import ErrorPage from "./pages/error";
+import Favorites from "./pages/Favorites";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -20,6 +21,10 @@ const RouterApp = createBrowserRouter([
   {
     path: "/movie/:id",
     element: <MovieDetails />,
+  },
+  {
+    path: "/favorites",
+    element: <Favorites />,
   },
 ]);
 

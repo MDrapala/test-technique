@@ -51,7 +51,7 @@ Votre rendu final devra comprendre :
 
 ### Si vous postulez pour le poste de dev Senior:
 
-- **Les mêmes exercices que le Junior**</br>
+- ✅ **Les mêmes exercices que le Junior**</br>
 - **Creation d'une liste de film à voir**: Un utilisateur peut se créer une liste de film à voir.</br>
 - **Ajout d'un système de rating**: Un utilisateur peut ajouter une note sur chaque film.</br>
 
