@@ -36,7 +36,7 @@ Votre rendu final devra comprendre :
 
 Ce test cherche à valider vos connaissance en ReactJS.
 
-**Objectif** : Utiliser l'API Movie Database, afin de réaliser une interface utilisateur.</br>
+✅ **Objectif** : Utiliser l'API Movie Database, afin de réaliser une interface utilisateur.</br>
 le lien vers la documentation: https://developers.themoviedb.org/3/getting-started/introduction
 L'API key à ajouter à la fin de l'URL: api_key=ad2c28e0345278f3c8b002efddadf28f
 
@@ -52,7 +52,7 @@ Votre rendu final devra comprendre :
 ### Si vous postulez pour le poste de dev Senior:
 
 - ✅ **Les mêmes exercices que le Junior**</br>
-- **Creation d'une liste de film à voir**: Un utilisateur peut se créer une liste de film à voir.</br>
-- **Ajout d'un système de rating**: Un utilisateur peut ajouter une note sur chaque film.</br>
+- ✅ **Creation d'une liste de film à voir**: Un utilisateur peut se créer une liste de film à voir.</br>
+- ✅ **Ajout d'un système de rating**: Un utilisateur peut ajouter une note sur chaque film.</br>
 
 Bon courage !

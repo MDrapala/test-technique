@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
 import Card from "./card";
-import { Movie } from "../types/movie";
+import { EditMovie, Movie } from "../types/movie";
 
 type PropsListCard = {
   movieLists: Movie[];
@@ -8,7 +8,9 @@ type PropsListCard = {
 
 const ListCard = ({ movieLists }: PropsListCard) => {
   const favoriteList = localStorage.getItem("favorites") || "[]";
-  const [favorites, setFavorites] = useState(JSON.parse(favoriteList));
+  const [favorites, setFavorites] = useState<EditMovie[]>(
+    JSON.parse(favoriteList)
+  );
 
   return (
     <section className="container mx-auto p-10 md:py-20 px-0 md:p-20 md:px-0 antialiased">

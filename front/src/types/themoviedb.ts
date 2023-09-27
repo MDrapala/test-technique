@@ -1,6 +1,8 @@
+import { Movie } from "./movie";
+
 export type TheMovieDBResult = {
   page: number;
-  results: Array<any>;
+  results: Movie[];
   total_pages: number;
   total_results: number;
 };

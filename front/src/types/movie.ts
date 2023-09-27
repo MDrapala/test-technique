@@ -1,3 +1,12 @@
+type InfoEdit = {
+  movie_id: number;
+  describe: string;
+};
+
+export interface EditMovie extends Movie {
+  edits?: InfoEdit;
+}
+
 export type Movie = {
   adult: boolean;
   backdrop_path: string;
